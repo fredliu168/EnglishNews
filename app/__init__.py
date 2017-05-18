@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 from config import config
 from flask import Flask
 from flask_bootstrap import Bootstrap
