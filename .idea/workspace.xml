@@ -167,7 +167,6 @@
         <option value="$PROJECT_DIR$/app/static/js/new-content.js" />
         <option value="$PROJECT_DIR$/app/main/views.py" />
         <option value="$PROJECT_DIR$/app/static/css/new-content.css" />
-        <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/app/templates/new-content.html" />
         <option value="$PROJECT_DIR$/app/static/css/new-list.css" />
         <option value="$PROJECT_DIR$/app/templates/news-list.html" />
@@ -176,6 +175,7 @@
         <option value="$PROJECT_DIR$/app/__init__.py" />
         <option value="$PROJECT_DIR$/app/api_1_0/newcontent.py" />
         <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/manage.py" />
       </list>
     </option>
   </component>
@@ -189,8 +189,8 @@
     <handled-path value="$PROJECT_DIR$/app/static/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="409" />
-    <option name="y" value="241" />
+    <option name="x" value="143" />
+    <option name="y" value="23" />
     <option name="width" value="1920" />
     <option name="height" value="972" />
   </component>
@@ -591,7 +591,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="409" y="241" width="1920" height="972" extended-state="0" />
+    <frame x="143" y="23" width="1920" height="972" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
