@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}{{ newTitle }}{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href={{ url_for('static',filename='css/new-content.css') }}>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <span id="newid" hidden="hidden">{{ newid }}</span>
+        <div class="item">
+            <h1><p>{{ newTitle }}</p></h1>
+            <h3>来源:{{ Source }}</h3>
+        </div>
+
+        {% raw %}
+        <div id="app">
+
+
+            <div><img v-bind:src="new_image_url" alt="new image" class="img-responsive"></div>
+
+            <ul id="repeat-content" class="content">
+                <li v-for="value in new_content">
+                    <p>{{ value['Sentence'] }}</p>
+                </li>
+            </ul>
+
+            <div class="bottom_box">
+                <div class="bottom">
+                    <h1> {{selected_word}} {{ word_phonetic }}</h1>
+                    <ul id="repeat-explains" class="content">
+                        <li v-for="value in word_explains">
+                            {{ value }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="close"><h3 >X</h3></div>
+            </div>
+
+
+        </div>
+
+        {% endraw %}
+    </div>
+{% endblock %}
+
+{% block script %}
+    {{ super() }}
+    <script src= {{ url_for('static',filename="js/new-content.js" ) }}></script>
+{% endblock %}

@@ -1,0 +1,102 @@
+.item {
+
+    padding-top: 10px;;
+}
+
+.item h1 {
+    font-size: 20px;
+    margin: 0px;
+}
+
+.item h3 {
+    padding-bottom: 4px;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.41);
+
+}
+
+p span {
+    font-size: 20px;
+}
+
+.word_selected {
+    color: green
+}
+
+.bottom_box {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    width: 100%;
+    display: none;
+    background: #202020;
+    filter: alpha(opacity=90);
+    -moz-opacity: .9;
+    opacity: .9;
+}
+
+* html .bottom_box {
+    position: absolute;
+    left: expression(eval(document.documentElement.scrollLeft+document.documentElement.clientWidth-this.offsetWidth)-(parseInt(this.currentStyle.marginLeft,10)||0)-(parseInt(this.currentStyle.marginRight,10)||0));
+    top: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)))
+}
+
+.bottom {
+    width: 100%;
+    padding-left: 10px;
+    height: auto;
+    margin: 4px auto;
+    color: #fff;
+    line-height: 30px;
+
+    position: relative;
+}
+
+.bottom h1{
+    font-size: 18px;
+}
+
+.bottom span {
+    width: 100%;
+    padding: 2px 2px 2px 2px;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    width: 18px;
+    height: 18px;
+
+
+    #background: url(http://keleyi.com/keleyi/phtml/jqtexiao/index/close.png) no-repeat;
+}
+
+.close h3{
+     color:white;
+}
+
+.register {
+    position: absolute;
+    bottom: 16px;
+    left: 675px;
+}
+
+.mini {
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1000;
+    display: none;
+}
+
+.content {
+    width: 100%;
+    padding: 2px 2px 2px 2px;
+}
+
+ul li {
+    list-style-type: none;
+}

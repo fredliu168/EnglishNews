@@ -1,0 +1,57 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.content {
+    width: 100%;
+    padding: 2px 2px 2px 2px;
+}
+
+html, body, .app {
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+    background-color: #ddd;
+    -webkit-overflow-scrolling: touch; /* ios5+ 以上滚动流畅*/
+}
+
+.item {
+
+    padding: 10px;
+
+    background-color: #fff;
+
+    border-bottom: 1px solid #ddd;
+
+    position: relative;
+
+    width: 100%;
+
+    display: block;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.item h1 {
+
+    font-size: 18px;
+    margin: 0px;
+
+}
+
+.item h3 {
+    padding-top: 4px;
+    font-size: 10px;
+    margin: 0px;
+    color: rgba(0, 0, 0, 0.41);
+
+}

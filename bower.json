@@ -1,0 +1,17 @@
+{
+  "name": "EnglishNews",
+  "description": "English news",
+  "main": "",
+  "authors": [
+    "fred"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

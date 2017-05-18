@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}看新闻学英语{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href={{ url_for('static',filename='css/new-list.css') }}>
+{% endblock %}
+
+{% block body %}
+    {% raw %}
+    <div id="app">
+
+    <div class="content">
+        <div>
+            <a :href='"/new/"+ firstNew.newid+"/"+titleNews+"/"+firstNew.Source'>
+                <div class="item">
+                    <div >
+                        <img v-bind:src=titleImage class="img-responsive"
+                             alt="new image">
+                    </div>
+                    <h1 class="name" style="padding-top: 4px;">{{titleNews}}</h1>
+                    <h3 class="name" style="padding-top: 4px">单词:{{firstNew.WordCount}} 难度:{{ firstNew.HardWeight }}
+                        来源:{{
+                        firstNew.Source }} 阅读量:{{ firstNew.ReadCount }}</h3>
+                </div>
+            </a>
+
+            <div class="item" v-for="(item, index) in news_list" v-if="index!=0" @click="clickTitle(item)">
+                <a :href='"/new/"+ item.NewsId+"/"+item.Title+"/"+item.Source'>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <h1 class="name">{{item.Title}}</h1>
+
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="thumbnail">
+                                <img v-bind:src=item.image
+                                     alt="new image" class="img-responsive">
+                            </div>
+                        </div>
+
+                    </div>
+                </a>
+
+                <h3 class="name">单词:{{item.WordCount}} 难度:{{ item.HardWeight }} 来源:{{ item.Source }} 阅读量:{{
+                    item.ReadCount }}</h3>
+
+            </div>
+        </div>
+
+    </div>
+
+    {% endraw %}
+
+
+{% endblock %}
+
+{% block script %}
+    {{ super() }}
+    <script type="text/javascript"
+            src= {{ url_for('static', filename = "node_modules/vue-pull-refresh/dist/vue-pull-refresh.min.js") }}></script>
+    <script src= {{ url_for('static',filename="js/news-list.js" ) }}></script>
+
+{% endblock %}

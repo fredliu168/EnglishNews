@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}new content{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .content {
+
+
+        }
+
+
+
+        html, body, .app {
+             width:100%;
+            overflow-x:hidden;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+
+            background-color: #ddd;
+            -webkit-overflow-scrolling: touch; /* ios5+ 以上滚动流畅*/
+        }
+
+        .item {
+
+            padding: 10px;
+
+            background-color: #fff;
+
+            border-bottom: 1px solid #ddd;
+
+            position: relative;
+
+            width: 100%;
+
+            display: block;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        .item h1 {
+
+            font-size: 18px;
+            margin: 0px;
+
+        }
+
+        .item h3 {
+            padding-top: 2px;
+            font-size: 10px;
+            margin: 0px;
+            color: rgba(0, 0, 0, 0.41);
+
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block body %}
+    {% raw %}
+    <div id="app">
+
+            <div class="content">
+                <div>
+                    <div class="item">
+                        <div class="thumbnail">
+                        <img v-bind:src=titleImage
+                                         alt="new image">
+                            </div>
+                         <h1 class="name">{{titleNews}}</h1>
+                         <h3 class="name" style="padding-top: 4px">单词:{{firstNew.WordCount}} 难度:{{ firstNew.HardWeight }} 来源:{{ firstNew.Source }} 阅读量:{{ firstNew.ReadCount }}</h3>
+                    </div>
+                    <div class="item" v-for="(item, index) in news_list" v-if="index!=0" @click="clickTitle(item)">
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <h1 class="name">{{item.Title}}</h1>
+
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="thumbnail">
+                                    <img v-bind:src=item.image
+                                         alt="new image">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <h3 class="name">单词:{{item.WordCount}} 难度:{{ item.HardWeight }} 来源:{{ item.Source }} 阅读量:{{ item.ReadCount }}</h3>
+
+                    </div>
+                </div>
+         <vue-pull-refresh :on-refresh="onRefresh">
+        </vue-pull-refresh>
+    </div>
+
+    {% endraw %}
+
+
+{% endblock %}
+
+{% block script %}
+    {{ super() }}
+    <script type="text/javascript"
+            src= {{ url_for('static', filename = "node_modules/vue-pull-refresh/dist/vue-pull-refresh.min.js") }}></script>
+    <script src= {{ url_for('static',filename="js/news-list.js" ) }}></script>
+
+{% endblock %}
