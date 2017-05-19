@@ -7,10 +7,10 @@
               content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="description" content="看新闻学英语，无障碍看英语新闻，点击单词就可查询中文解释。-- 小布子英语频道">
+        <meta name="description" content="看新闻学英语，无障碍看英语新闻，点击单词即可查询中文解释。问题反馈请加微信号-- 小布子英语频道">
         <meta name="keywords"
-              content="english news">
-        <meta name="author" content="fred">
+              content="english news 英语学习 英语新闻">
+        <meta name="author" content="微信:fredliu168168">
         <meta name="author" content="www.qzcool.com">
         <!-- 引入样式 -->
         <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
@@ -26,11 +26,14 @@
 
         <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 
-        <title>{% block title %}{% endblock %} - 小布子</title>
+        <title>{% block title %}{% endblock %} - 小布子英语频道</title>
     {% endblock %}
 </head>
 
 <body>
+<div style='margin:0 auto;display:none;'>
+<img src={{ url_for('static',filename="image/news.png" ) }}/>
+</div>
 {% block body %}
 {% endblock %}
 </body>
