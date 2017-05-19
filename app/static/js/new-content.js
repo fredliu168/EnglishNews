@@ -86,6 +86,8 @@ new Vue({
                 event.target.className = "word_selected";
                 vm.selected_word_elem = event.target;
                 vm.selected_word = event.target.innerHTML;
+                vm.word_explains = '';
+                vm.word_phonetic = '';
                 //vm.visible = true;
 
                 console.log(vm.selected_word);
