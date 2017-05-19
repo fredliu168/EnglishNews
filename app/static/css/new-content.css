@@ -103,3 +103,7 @@ ul li {
 .hide {
     display: none;
 }
+
+.news{
+    padding-top: 10px;
+}

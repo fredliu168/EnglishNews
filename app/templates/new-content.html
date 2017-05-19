@@ -20,13 +20,13 @@
 
 
             <div><img v-bind:src="new_image_url" alt="new image" class="img-responsive"></div>
-
-            <ul id="repeat-content" class="content">
-                <li v-for="value in new_content">
-                    <p>{{ value['Sentence'] }}</p>
-                </li>
-            </ul>
-
+            <div class="news">
+                <ul id="repeat-content" class="content">
+                    <li v-for="value in new_content">
+                        <p>{{ value['Sentence'] }}</p>
+                    </li>
+                </ul>
+            </div>
             <div class="bottom_box">
                 <div class="bottom">
                     <h1> {{selected_word}} {{ word_phonetic }}</h1>
@@ -36,7 +36,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="close"><h3 >X</h3></div>
+                <div class="close"><h3>X</h3></div>
             </div>
 
 
