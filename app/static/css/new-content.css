@@ -53,7 +53,7 @@ p span {
     position: relative;
 }
 
-.bottom h1{
+.bottom h1 {
     font-size: 18px;
 }
 
@@ -69,12 +69,11 @@ p span {
     width: 18px;
     height: 18px;
 
-
     #background: url(http://keleyi.com/keleyi/phtml/jqtexiao/index/close.png) no-repeat;
 }
 
-.close h3{
-     color:white;
+.close h3 {
+    color: white;
 }
 
 .register {
@@ -99,4 +98,8 @@ p span {
 
 ul li {
     list-style-type: none;
+}
+
+.hide {
+    display: none;
 }
