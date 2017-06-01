@@ -2,7 +2,18 @@
 基于Pyton Flask 框架的H5页面,
 英语新闻轻松读,点击单词自动查询有道字典
 
-演示地址:https://englishnews.herokuapp.com/
+演示地址:http://www.qzcool.com/
+
+生成需求文件
+```
+(venv)$ pip freeze >requirement.txt
+```
+安装
+
+```
+(venv)$ pip install -r requirement.txt
+```
+
 
 发布步骤:
 
@@ -85,7 +96,7 @@ python manage.py runserver -h 0.0.0.0
 uwsgi config.ini --wsgi-disable-file-wrapper
 ```
 
-安装 Supervisor
+### 安装 Supervisor
 
 [Supervisor|http://supervisord.org/configuration.html]可以同时启动多个应用，最重要的是，当某个应用Crash的时候，他可以自动重启该应用，保证可用性。
 
@@ -130,3 +141,26 @@ sudo service supervisor start
 ```
 sudo service supervisor stop
 ```
+
+### nginx 配置
+
+配置路径
+
+cd /etc/nginx/sites-available
+
+```
+server {
+      listen  80;
+      server_name www.qzcool.com; #公网地址
+
+      location / {
+      proxy_pass  http://127.0.0.1:5000/;
+      proxy_set_header    Host    $host;
+      proxy_set_header    X-Real-IP   $remote_addr;
+      }
+    }
+```
+
+重新启动nginx
+
+service nginx restart

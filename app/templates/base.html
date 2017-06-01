@@ -16,18 +16,19 @@
         <meta name="author" content="微信:fredliu168168">
         <meta name="author" content="www.qzcool.com">
         <!-- 引入样式 -->
-        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
+        <link rel="stylesheet" href="//unpkg.com/element-ui/lib/theme-default/index.css">
         <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
               integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
               crossorigin="anonymous">
 
         <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
               integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
               crossorigin="anonymous">
 
         <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <link rel="stylesheet" href={{ url_for('static',filename='css/loading.css') }}>
 
         <title>{% block title %}{% endblock %} - 英语阅读吧</title>
     {% endblock %}
@@ -42,14 +43,14 @@
 </body>
 {% block script %}
 
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
     <!-- 先引入 Vue -->
     <script type="text/javascript" src={{ url_for('static',filename="node_modules/vue/dist/vue.min.js" ) }}></script>
     <!-- 引入组件库 -->
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="//unpkg.com/element-ui/lib/index.js"></script>
     <script src= {{ url_for('static',filename="js/ajax-helper.js" ) }}></script>
 {% endblock %}
 </html>

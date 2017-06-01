@@ -9,7 +9,9 @@
     {% raw %}
     <div id="app">
 
-    <div class="content">
+   <div v-show="loading" class="loading"></div>
+
+    <div class="content" v-show="!loading" >
         <div>
             <a :href='"/new/"+ firstNew.newid+"/"+titleNews+"/"+firstNew.Source'>
                 <div class="item">

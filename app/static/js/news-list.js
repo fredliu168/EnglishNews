@@ -4,6 +4,7 @@
 new Vue({
     el: '#app',
     data: {
+        loading: false,
         news_list: [], //新闻内容
         api: '/api/v1.0/',
         titleImage:'',
@@ -18,6 +19,7 @@ new Vue({
 
     },
     mounted: function () {
+        this.loading = true;
         this.getList(0);
     },
     components: {
@@ -50,6 +52,8 @@ new Vue({
                 }
 
                 console.log(vm.news_list);
+
+                vm.loading = false;
 
             }, function (err_data) {
 

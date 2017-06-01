@@ -4,8 +4,9 @@
 new Vue({
     el: '#app',
     data: {
+        loading: false,
         visible: false,
-        isOut:true,
+        isOut: true,
         selected_word_elem: null,
         new_content: '', //新闻内容
         word_phonetic: '',
@@ -13,15 +14,15 @@ new Vue({
         selected_word: "",
         bottom_box: null,
         api: '/api/v1.0/',
-        new_image_url:'',
-        newid:0
+        new_image_url: '',
+        newid: 0
     },
 
     mounted: function () {
 
         this.newid = $("#newid").text();
 
-        this.new_image_url = this.api+'image/'+this.newid+'.jpg';
+        this.new_image_url = this.api + 'image/' + this.newid + '.jpg';
 
         console.log(this.newid);
 
@@ -45,6 +46,8 @@ new Vue({
         },
 
         setWordExplains: function () {
+
+
             var p = $('p');
             p.html(function (index, oldHtml) {
                 var htm = oldHtml.replace(/\b(\w+?)\b/g, '<span class="word">$1</span>');
@@ -104,9 +107,8 @@ new Vue({
                     vm.word_phonetic = data['basic']['us-phonetic'];
                     vm.word_explains = data['basic']['explains'];
 
-                    if(vm.word_phonetic != null)
-                    {
-                        vm.word_phonetic = '/'+vm.word_phonetic+'/';
+                    if (vm.word_phonetic != null) {
+                        vm.word_phonetic = '/' + vm.word_phonetic + '/';
                     }
 
                 }, function (err_data) {
@@ -123,6 +125,8 @@ new Vue({
             var vm = this;
             var url = vm.api + 'news/' + newID;
 
+            this.loading = true;
+
 
             $request.get(url, null, function (data) {
 
@@ -132,6 +136,7 @@ new Vue({
                     //渲染完毕
                     console.log('渲染完毕');
                     vm.setWordExplains();//设置可以查单词
+                    vm.loading = false;
 
                 });
 
