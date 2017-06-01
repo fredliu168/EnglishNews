@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ccd8be15-5aaf-472b-aff6-e44767bc1d54" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.MD" afterPath="$PROJECT_DIR$/README.MD" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/new-content.html" afterPath="$PROJECT_DIR$/app/templates/new-content.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/news-list.html" afterPath="$PROJECT_DIR$/app/templates/news-list.html" />
     </list>
@@ -64,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/app/templates/new-content.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="473">
-              <caret line="59" column="75" selection-start-line="59" selection-start-column="64" selection-end-line="59" selection-end-column="75" />
+              <caret line="59" column="79" selection-start-line="59" selection-start-column="66" selection-end-line="59" selection-end-column="79" />
               <folding />
             </state>
           </provider>
@@ -103,8 +102,8 @@
       <file leaf-file-name="news-list.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/templates/news-list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="62" column="73" selection-start-line="62" selection-start-column="73" selection-end-line="62" selection-end-column="73" />
+            <state relative-caret-position="435">
+              <caret line="60" column="34" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -992,15 +991,15 @@
     <entry file="file://$PROJECT_DIR$/app/templates/new-content.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="473">
-          <caret line="59" column="75" selection-start-line="59" selection-start-column="64" selection-end-line="59" selection-end-column="75" />
+          <caret line="59" column="79" selection-start-line="59" selection-start-column="66" selection-end-line="59" selection-end-column="79" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/news-list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="62" column="73" selection-start-line="62" selection-start-column="73" selection-end-line="62" selection-end-column="73" />
+        <state relative-caret-position="435">
+          <caret line="60" column="34" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
           <folding />
         </state>
       </provider>

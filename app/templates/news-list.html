@@ -60,6 +60,6 @@
     {{ super() }}
     <script type="text/javascript"
             src= {{ url_for('static', filename = "node_modules/vue-pull-refresh/dist/vue-pull-refresh.min.js") }}></script>
-    <script src= {{ url_for('static',filename="js/news-list.js?v=20170601" ) }}></script>
+    <script src= {{ url_for('static',filename="js/news-list.js",v='20170601' ) }}></script>
 
 {% endblock %}
