@@ -4,7 +4,7 @@
 new Vue({
     el: '#app',
     data: {
-        loading: false,
+        loading: true,
         news_list: [], //新闻内容
         api: '/api/v1.0/',
         titleImage:'',

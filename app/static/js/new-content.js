@@ -4,7 +4,7 @@
 new Vue({
     el: '#app',
     data: {
-        loading: false,
+        loading: true,
         visible: false,
         isOut: true,
         selected_word_elem: null,
