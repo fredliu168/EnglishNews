@@ -56,3 +56,77 @@ Just got this with Python 3.6.1 and flask send_file(), running uwsgi 2.0.15 with
 ```
 uwsgi config.ini --wsgi-disable-file-wrapper
 ```
+
+
+mac 远程连接阿里云服务器
+
+ssh root@IPaddress
+
+安装虚拟环境
+
+```
+pyvenv /home/www/venv_english
+
+```
+
+激活虚拟环境
+
+```
+source venv_english/bin/acitvate
+```
+
+启动应用
+
+```
+python manage.py runserver -h 0.0.0.0
+```
+或者
+```
+uwsgi config.ini --wsgi-disable-file-wrapper
+```
+
+安装 Supervisor
+
+[Supervisor|http://supervisord.org/configuration.html]可以同时启动多个应用，最重要的是，当某个应用Crash的时候，他可以自动重启该应用，保证可用性。
+
+sudo apt-get install supervisor
+Supervisor 的全局的配置文件位置在：
+
+/etc/supervisor/supervisor.conf
+
+正常情况下我们并不需要去对其作出任何的改动，只需要添加一个新的 *.conf 文件放在
+
+/etc/supervisor/conf.d/
+
+下就可以，那么我们就新建立一个用于启动 my_flask 项目的 uwsgi 的 supervisor 配置 (命名为：englishnews_supervisor.conf)：
+
+
+/etc/supervisor/conf.d/englishnews_supervisor.conf
+
+```
+[program:englishnews]
+# 启动命令入口
+command=/home/www/venv_english/bin/uwsgi /home/www/EnglishNews/config.ini
+
+# 命令程序所在目录
+directory=/home/www/EnglishNews
+#运行命令的用户名
+user=root
+
+autostart=true
+autorestart=true
+#日志地址
+stdout_logfile=/home/www/EnglishNews/logs/uwsgi_supervisor.log
+stderr_logfile=/home/www/EnglishNews/logs/err.log
+stopsignal=INT
+[supervisord]
+```
+
+启动服务
+```
+sudo service supervisor start
+```
+终止服务
+```
+sudo service supervisor stop
+```
