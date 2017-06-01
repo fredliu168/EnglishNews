@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ccd8be15-5aaf-472b-aff6-e44767bc1d54" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/js/new-content.js" afterPath="$PROJECT_DIR$/app/static/js/new-content.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/js/news-list.js" afterPath="$PROJECT_DIR$/app/static/js/news-list.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/new-content.html" afterPath="$PROJECT_DIR$/app/templates/new-content.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/news-list.html" afterPath="$PROJECT_DIR$/app/templates/news-list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/base.html" afterPath="$PROJECT_DIR$/app/templates/base.html" />
     </list>
     <ignored path="EnglishNews.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,17 +88,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+            <state relative-caret-position="332">
+              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="news-list.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="news-list.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/news-list.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="338">
@@ -177,12 +174,12 @@
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/app/static/css/new-list.css" />
         <option value="$PROJECT_DIR$/app/static/css/loading.css" />
-        <option value="$PROJECT_DIR$/app/templates/base.html" />
         <option value="$PROJECT_DIR$/README.MD" />
         <option value="$PROJECT_DIR$/app/static/js/news-list.js" />
         <option value="$PROJECT_DIR$/app/static/js/new-content.js" />
         <option value="$PROJECT_DIR$/app/templates/news-list.html" />
         <option value="$PROJECT_DIR$/app/templates/new-content.html" />
+        <option value="$PROJECT_DIR$/app/templates/base.html" />
       </list>
     </option>
   </component>
@@ -958,14 +955,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.MD">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -1002,6 +991,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
           <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
       </provider>
