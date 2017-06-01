@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ccd8be15-5aaf-472b-aff6-e44767bc1d54" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/css/loading.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.MD" afterPath="$PROJECT_DIR$/README.MD" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/css/new-list.css" afterPath="$PROJECT_DIR$/app/static/css/new-list.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/js/new-content.js" afterPath="$PROJECT_DIR$/app/static/js/new-content.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/js/news-list.js" afterPath="$PROJECT_DIR$/app/static/js/news-list.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/base.html" afterPath="$PROJECT_DIR$/app/templates/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/new-content.html" afterPath="$PROJECT_DIR$/app/templates/new-content.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/news-list.html" afterPath="$PROJECT_DIR$/app/templates/news-list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage.py" afterPath="$PROJECT_DIR$/manage.py" />
     </list>
     <ignored path="EnglishNews.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,18 +53,18 @@
       <file leaf-file-name="README.MD" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.MD">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="405">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new-content.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="new-content.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/new-content.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="473">
+              <caret line="59" column="75" selection-start-line="59" selection-start-column="64" selection-end-line="59" selection-end-column="75" />
               <folding />
             </state>
           </provider>
@@ -107,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="news-list.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="news-list.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/templates/news-list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="465">
+              <caret line="62" column="73" selection-start-line="62" selection-start-column="73" selection-end-line="62" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -180,15 +173,15 @@
         <option value="$PROJECT_DIR$/../dockertest/app/app.py" />
         <option value="$PROJECT_DIR$/wsgi.py" />
         <option value="$PROJECT_DIR$/config.ini" />
-        <option value="$PROJECT_DIR$/README.MD" />
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/app/static/js/news-list.js" />
-        <option value="$PROJECT_DIR$/app/templates/news-list.html" />
         <option value="$PROJECT_DIR$/app/static/css/new-list.css" />
         <option value="$PROJECT_DIR$/app/static/css/loading.css" />
         <option value="$PROJECT_DIR$/app/templates/base.html" />
         <option value="$PROJECT_DIR$/app/static/js/new-content.js" />
+        <option value="$PROJECT_DIR$/README.MD" />
         <option value="$PROJECT_DIR$/app/templates/new-content.html" />
+        <option value="$PROJECT_DIR$/app/templates/news-list.html" />
       </list>
     </option>
   </component>
@@ -938,14 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.MD">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -960,14 +945,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="39" column="52" selection-start-line="39" selection-start-column="52" selection-end-line="39" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/news-list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1004,10 +981,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.MD">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/new-content.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="473">
+          <caret line="59" column="75" selection-start-line="59" selection-start-column="64" selection-end-line="59" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/news-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="62" column="73" selection-start-line="62" selection-start-column="73" selection-end-line="62" selection-end-column="73" />
           <folding />
         </state>
       </provider>

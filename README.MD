@@ -14,6 +14,21 @@
 (venv)$ pip install -r requirement.txt
 ```
 
+拉取最新代码
+
+```
+git pull eng master
+```
+
+覆盖本地文件
+
+```
+git reset --hard
+
+git pull
+
+```
+
 
 发布步骤:
 
