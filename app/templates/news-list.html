@@ -3,19 +3,26 @@
 {% block head %}
     {{ super() }}
     <link rel="stylesheet" href={{ url_for('static',filename='css/new-list.css') }}>
+
+    <script type="text/javascript">
+        function URLencode(sStr) {//处理url中特殊保留字符?
+            return encodeURI(sStr).replace(/\?/g, '%3F').replace(/\+/g, '%2B').replace(/\"/g, '%22').replace(/\'/g, '%27').replace(/\//g, '%2F');
+        }
+    </script>
+
 {% endblock %}
 
 {% block body %}
     {% raw %}
     <div id="app">
 
-   <div v-show="loading" class="loading"></div>
+    <div v-show="loading" class="loading"></div>
 
-    <div class="content" v-show="!loading" >
+    <div class="content" v-show="!loading">
         <div>
             <a :href='"/new/"+ firstNew.newid+"/"+titleNews+"/"+firstNew.Source'>
                 <div class="item">
-                    <div >
+                    <div>
                         <img v-bind:src=titleImage class="img-responsive"
                              alt="new image">
                     </div>
@@ -27,7 +34,7 @@
             </a>
 
             <div class="item" v-for="(item, index) in news_list" v-if="index!=0" @click="clickTitle(item)">
-                <a :href='"/new/"+ item.NewsId+"/"+item.Title+"/"+item.Source'>
+                <a :href='"/new/"+ item.NewsId+"/"+URLencode(item.Title)+"/"+encodeURI(item.Source)'>
                     <div class="row">
                         <div class="col-xs-8">
                             <h1 class="name">{{item.Title}}</h1>
