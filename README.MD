@@ -163,6 +163,13 @@ sudo service supervisor stop
 
 cd /etc/nginx/sites-available
 
+日志目录
+
+access_log /var/log/nginx/access.log;
+
+error_log /var/log/nginx/error.log;
+
+
 ```
 server {
       listen  80;
@@ -179,3 +186,85 @@ server {
 重新启动nginx
 
 service nginx restart
+
+处理URL特殊字符问题
+
+```
+  <script type="text/javascript">
+        function URLencode(sStr) {//处理url中特殊保留字符?
+            return encodeURI(sStr).replace(/\?/g, '%3F').replace(/\+/g, '%2B').replace(/\"/g, '%22').replace(/\'/g, '%27').replace(/\//g, '%2F');
+        }
+  </script>
+```
+
+
+配置https
+
+openssl req -new -sha256 -key domain.key -subj "/" -reqexts SAN -config <(cat /etc/ssl/openssl.cnf <(printf "[SAN]\nsubjectAltName=DNS:www.qzcool.com")) > domain.csr
+
+
+server {
+    listen  443 ssl http2 fastopen=3 reuseport;
+
+    # 如果你使用了 Cloudflare 的 HTTP/2 + SPDY 补丁，记得加上 spdy
+    # listen               443 ssl http2 spdy fastopen=3 reuseport;
+
+    server_name          www.qzcool.com;
+    server_tokens        off;
+
+    include              /home/jerry/www/nginx_conf/ip.blacklist;
+
+
+
+    # 中间证书 + 站点证书
+    ssl_certificate      /home/www/ssl/chained.pem;
+
+    # 创建 CSR 文件时用的密钥
+    ssl_certificate_key  /home/www/ssl/domain.key;
+
+    # openssl dhparam -out dhparams.pem 2048
+    # https://weakdh.org/sysadmin.html
+    ssl_dhparam          /home/www/ssl/dhparams.pem;
+
+    # https://github.com/cloudflare/sslconfig/blob/master/conf
+    ssl_ciphers                EECDH+CHACHA20:EECDH+CHACHA20-draft:EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;
+
+    # 如果启用了 RSA + ECDSA 双证书，Cipher Suite 可以参考以下配置：
+    # ssl_ciphers              EECDH+CHACHA20:EECDH+CHACHA20-draft:EECDH+ECDSA+AES128:EECDH+aRSA+AES128:RSA+AES128:EECDH+ECDSA+AES256:EECDH+aRSA+AES256:RSA+AES256:EECDH+ECDSA+3DES:EECDH+aRSA+3DES:RSA+3DES:!MD5;
+
+    ssl_prefer_server_ciphers  on;
+
+    ssl_protocols              TLSv1 TLSv1.1 TLSv1.2;
+
+    ssl_session_cache          shared:SSL:50m;
+    ssl_session_timeout        1d;
+
+    ssl_session_tickets        on;
+
+    ssl_stapling               on;
+    ssl_stapling_verify        on;
+
+    # 根证书 + 中间证书
+    # https://imququ.com/post/why-can-not-turn-on-ocsp-stapling.html
+    ssl_trusted_certificate    /home/www/ssl/full_chained.pem;
+
+      location / {
+      proxy_pass  http://127.0.0.1:5000/;
+      proxy_set_header    Host    $host;
+      proxy_set_header    X-Real-IP   $remote_addr;
+      }
+    }
+
+server {
+    server_name www.qzcool.com;
+
+    location ^~ /.well-known/acme-challenge/ {
+        alias /home/www/challenges/;
+        try_files $uri =404;
+    }
+
+    location / {
+        rewrite ^/(.*)$ https://www.qzcool.com/$1 permanent;
+    }
+}
+
