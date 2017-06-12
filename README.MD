@@ -225,13 +225,15 @@ service nginx restart
 
 ### 创建帐号
 
-首先创建一个目录，例如 ssl，用来存放各种临时文件和最后的证书文件。进入这个目录，创建一个 RSA 私钥用于 Let's Encrypt 识别你的身份：
+首先创建一个目录，例如 ssl，用来存放各种临时文件和最后的证书文件。
 
 本项目放在
 
 ```
 /home/www/ssl
 ```
+
+进入这个目录，创建一个 RSA 私钥用于 Let's Encrypt 识别你的身份：
 
 ```
 
@@ -397,8 +399,47 @@ service nginx reload
 
 ```
 
+crontab 中使用绝对路径比较保险，crontab -e 加入以下内容：
 
 ```
 0 0 1 * * /home/ssl/renew_cert.sh >/dev/null 2>&1
 
 ```
+
+
+# Redis 访问
+
+### mac 安装redis
+
+通过homebrew安装
+```
+brew install redis
+```
+1 启动redis服务
+执行以下命令
+
+```
+redis-server /usr/local/etc/redis.conf
+```
+
+
+To have launchd start redis now and restart at login:
+```
+  brew services start redis
+```
+Or, if you don't want/need a background service you can just run:
+```
+  redis-server /usr/local/etc/redis.conf
+```
+
+2 查看redis服务是否启动
+
+```
+ps aux | grep redis
+```
+
+通过redis-cli命令可以启动redis客户端
+```
+redis-cli
+```
+
