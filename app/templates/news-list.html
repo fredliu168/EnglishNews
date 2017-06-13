@@ -20,7 +20,7 @@
 
     <div class="content" v-show="!loading">
         <div>
-            <a :href='"/new/"+ firstNew.newid+"/"+titleNews+"/"+firstNew.Source'>
+            <a :href='"/new/"+firstNew.newid+"/"+ URLencode(titleNews)+"/"+firstNew.Source'>
                 <div class="item">
                     <div>
                         <img v-bind:src=titleImage class="img-responsive"
