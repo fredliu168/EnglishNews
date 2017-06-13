@@ -104,10 +104,19 @@ new Vue({
                 $request.get(url, null, function (data) {
 
                     console.log(data);
-                    vm.word_phonetic = data['basic']['us-phonetic'];
-                    vm.word_explains = data['basic']['explains'];
 
-                    if (vm.word_phonetic != null) {
+                    if(data['basic']!= null)
+                    {
+                        vm.word_phonetic = data['basic']['us-phonetic'];
+                        vm.word_explains = data['basic']['explains'];
+                    }
+
+                    if (vm.word_explains == '')
+                    {
+                        vm.word_explains = data['translation'];
+                    }
+
+                    if (vm.word_phonetic != '') {
                         vm.word_phonetic = '/' + vm.word_phonetic + '/';
                     }
 

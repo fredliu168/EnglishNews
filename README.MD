@@ -54,6 +54,7 @@ manage.py replaces running the app with python app.py. It is provided by Flask-S
 
 ```py
 python manage.py runserver -h localhost -p 8080 -d
+python manage.py runserver -h 0.0.0.0 -p 8080 -d
 ```
 
 or you can override the defaults when configuring the manager:
