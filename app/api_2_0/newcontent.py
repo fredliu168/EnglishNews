@@ -122,5 +122,6 @@ def redis_cls():
         rs.get(None)  # getting None returns None or throws an exception
     except (redis.exceptions.ConnectionError,
             redis.exceptions.BusyLoadingError):
+        print("redis.exceptions.ConnectionError")
         return None
     return rs
