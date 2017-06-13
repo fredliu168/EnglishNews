@@ -116,7 +116,7 @@ new Vue({
                         vm.word_explains = data['translation'];
                     }
 
-                    if (vm.word_phonetic != '') {
+                    if (vm.word_phonetic != '' && vm.word_phonetic != null) {
                         vm.word_phonetic = '/' + vm.word_phonetic + '/';
                     }
 
