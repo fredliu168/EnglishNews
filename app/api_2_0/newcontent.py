@@ -19,7 +19,7 @@ def getText(NewsId):
     if rs is not None:
         news = rs.get(NewsId)  # 获取新闻的解释
         if news is not None:
-            rs.expire(NewsId, 216000)  # 更新过期时间
+            rs.expire(NewsId, 3600)  # 更新过期时间
 
             return news
 
@@ -27,7 +27,7 @@ def getText(NewsId):
     url = "{}/getText.jsp?format=json&NewsId={}".format(current_app.config['SVR_NEWS_URL'], NewsId)
     reponse = requests.get(url)
     if rs is not None:
-        rs.set(NewsId, reponse.text, ex=216000)  # 设置过期时间 1小时
+        rs.set(NewsId, reponse.text, ex=3600)  # 设置过期时间 1小时
 
     return reponse.text
 
@@ -50,7 +50,7 @@ def getNewsList(maxid):
     reponse = requests.get(url)
 
     if rs is not None:
-        rs.set('maxid_{}'.format(maxid), reponse.text, ex=108000)  # 设置过期时间 半小时
+        rs.set('maxid_{}'.format(maxid), reponse.text, ex=1800)  # 设置过期时间 半小时
 
     return reponse.text
 
@@ -68,8 +68,8 @@ def queryWord(word):
     if rs is not None:
         explain = rs.get(word)  # 获取单词的解释
         if explain is not None:
-            rs.expire(word, 216000)  # 更新过期时间
-            print('redis')
+            rs.expire(word, 3600)  # 更新过期时间
+
             return explain
 
     # 从网络获取单词解释
@@ -77,7 +77,7 @@ def queryWord(word):
     reponse = requests.get(url)
 
     if rs is not None:
-        rs.set(word, reponse.text, ex=216000)  # 设置过期时间 1小时
+        rs.set(word, reponse.text, ex=3600)  # 设置过期时间 1小时
 
     return reponse.text
 
@@ -94,7 +94,7 @@ def getImage(imgID):
     if rs is not None:
         img = rs.get(imgID)  # 获取单词的解释
         if img is not None:
-            rs.expire(imgID, 216000)  # 更新过期时间
+            rs.expire(imgID, 3600)  # 更新过期时间
 
             return send_file(io.BytesIO(img),
                              attachment_filename=imgID,
@@ -104,7 +104,7 @@ def getImage(imgID):
     r = requests.get(url)
 
     if rs is not None:
-        rs.set(imgID, r.content, ex=216000)  # 设置过期时间 1小时
+        rs.set(imgID, r.content, ex=3600)  # 设置过期时间 1小时
 
     return send_file(io.BytesIO(r.content),
                      attachment_filename=imgID,
