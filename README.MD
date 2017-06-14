@@ -408,7 +408,9 @@ crontab 中使用绝对路径比较保险，crontab -e 加入以下内容：
 ```
 
 
-# Redis 访问
+# 通过Redis 加速访问速度
+
+把有道词典的查询结果保存到本地的redis中,减少网络查询次数
 
 ### mac 安装redis
 
