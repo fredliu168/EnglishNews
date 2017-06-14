@@ -11,6 +11,10 @@ class Config:
     SVR_NEWS_IMG_URL = 'http://static.iyuba.com/cms/news/image/' #新闻图片
     REDIS_PORT = '6379' # redis 连接 端口
     REDIS_HOST = 'localhost'
+    REDIS_WORD_TIME = 604800 # 单词保持时间 一星期
+    REDIS_NEWS_TIME = 604800  # 新闻保持时间 一星期
+    REDIS_NEWS_LIST_TIME = 3600 # 新闻列表 1小时
+    REDIS_IMG_TIME = 604800 # 图片保持时间 一星期
 
     @staticmethod
     def init_app(app):

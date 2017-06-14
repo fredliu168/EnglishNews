@@ -14,12 +14,14 @@ import redis
 
 @api.route('/news/<int:NewsId>', methods=['GET'])
 def getText(NewsId):
+
+    REDIS_NEWS_TIME = current_app.config['REDIS_NEWS_TIME']
     rs = redis_cls()  # 连接resdis
 
     if rs is not None:
         news = rs.get(NewsId)  # 获取新闻的解释
         if news is not None:
-            rs.expire(NewsId, 3600)  # 更新过期时间
+            rs.expire(NewsId, REDIS_NEWS_TIME)  # 更新过期时间
 
             return news
 
@@ -27,7 +29,7 @@ def getText(NewsId):
     url = "{}/getText.jsp?format=json&NewsId={}".format(current_app.config['SVR_NEWS_URL'], NewsId)
     reponse = requests.get(url)
     if rs is not None:
-        rs.set(NewsId, reponse.text, ex=3600)  # 设置过期时间 1小时
+        rs.set(NewsId, reponse.text, ex=REDIS_NEWS_TIME)  # 设置过期时间 1小时
 
     return reponse.text
 
@@ -50,7 +52,8 @@ def getNewsList(maxid):
     reponse = requests.get(url)
 
     if rs is not None:
-        rs.set('maxid_{}'.format(maxid), reponse.text, ex=1800)  # 设置过期时间 半小时
+        REDIS_NEWS_LIST_TIME = current_app.config['REDIS_NEWS_LIST_TIME']
+        rs.set('maxid_{}'.format(maxid), reponse.text, ex=REDIS_NEWS_LIST_TIME)  # 设置过期时间 半小时
 
     return reponse.text
 
@@ -63,12 +66,13 @@ def getNewsList(maxid):
 
 @api.route('/query/<string:word>', methods=['GET'])
 def queryWord(word):
+    REDIS_WORD_TIME = current_app.config['REDIS_WORD_TIME']
     rs = redis_cls()  # 连接resdis
 
     if rs is not None:
         explain = rs.get(word)  # 获取单词的解释
         if explain is not None:
-            rs.expire(word, 3600)  # 更新过期时间
+            rs.expire(word, REDIS_WORD_TIME)  # 更新过期时间
 
             return explain
 
@@ -77,7 +81,7 @@ def queryWord(word):
     reponse = requests.get(url)
 
     if rs is not None:
-        rs.set(word, reponse.text, ex=3600)  # 设置过期时间 1小时
+        rs.set(word, reponse.text, ex=REDIS_WORD_TIME)  # 设置过期时间 1小时
 
     return reponse.text
 
@@ -90,11 +94,12 @@ def queryWord(word):
 @api.route('/image/<string:imgID>', methods=['GET'])
 def getImage(imgID):
     rs = redis_cls()  # 连接resdis
+    REDIS_IMG_TIME = current_app.config['REDIS_IMG_TIME']
 
     if rs is not None:
         img = rs.get(imgID)  # 获取单词的解释
         if img is not None:
-            rs.expire(imgID, 3600)  # 更新过期时间
+            rs.expire(imgID, REDIS_IMG_TIME)  # 更新过期时间
 
             return send_file(io.BytesIO(img),
                              attachment_filename=imgID,
@@ -104,7 +109,7 @@ def getImage(imgID):
     r = requests.get(url)
 
     if rs is not None:
-        rs.set(imgID, r.content, ex=3600)  # 设置过期时间 1小时
+        rs.set(imgID, r.content, ex=REDIS_IMG_TIME)  # 设置过期时间 1小时
 
     return send_file(io.BytesIO(r.content),
                      attachment_filename=imgID,
