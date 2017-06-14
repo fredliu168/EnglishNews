@@ -20,7 +20,7 @@ def getText(NewsId):
 
     if rs is not None:
         news = rs.get(NewsId)  # 获取新闻的解释
-        if news is not None:
+        if news is not None :
             rs.expire(NewsId, REDIS_NEWS_TIME)  # 更新过期时间
 
             return news
@@ -28,7 +28,7 @@ def getText(NewsId):
     # 从网络获取新闻
     url = "{}/getText.jsp?format=json&NewsId={}".format(current_app.config['SVR_NEWS_URL'], NewsId)
     reponse = requests.get(url)
-    if rs is not None:
+    if rs is not None and reponse.status_code == 200:
         rs.set(NewsId, reponse.text, ex=REDIS_NEWS_TIME)  # 设置过期时间 1小时
 
     return reponse.text
@@ -51,7 +51,7 @@ def getNewsList(maxid):
         current_app.config['SVR_NEWS_URL'], maxid)
     reponse = requests.get(url)
 
-    if rs is not None:
+    if rs is not None and reponse.status_code == 200:
         REDIS_NEWS_LIST_TIME = current_app.config['REDIS_NEWS_LIST_TIME']
         rs.set('maxid_{}'.format(maxid), reponse.text, ex=REDIS_NEWS_LIST_TIME)  # 设置过期时间 半小时
 
@@ -80,7 +80,7 @@ def queryWord(word):
     url = "{}{}".format(current_app.config['SVR_DIC_URL'], word)
     reponse = requests.get(url)
 
-    if rs is not None:
+    if rs is not None and reponse.status_code == 200:
         rs.set(word, reponse.text, ex=REDIS_WORD_TIME)  # 设置过期时间 1小时
 
     return reponse.text
@@ -108,7 +108,7 @@ def getImage(imgID):
     url = "{}{}".format(current_app.config['SVR_NEWS_IMG_URL'], imgID)
     r = requests.get(url)
 
-    if rs is not None:
+    if rs is not None and r.status_code == 200:
         rs.set(imgID, r.content, ex=REDIS_IMG_TIME)  # 设置过期时间 1小时
 
     return send_file(io.BytesIO(r.content),
