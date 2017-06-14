@@ -5,6 +5,8 @@ from . import api
 import json
 import requests
 import redis
+import hashlib
+import random
 
 """
 获取新闻
@@ -28,8 +30,13 @@ def getText(NewsId):
     # 从网络获取新闻
     url = "{}/getText.jsp?format=json&NewsId={}".format(current_app.config['SVR_NEWS_URL'], NewsId)
     reponse = requests.get(url)
+
+    print(reponse.status_code)
+
     if rs is not None and reponse.status_code == 200:
         rs.set(NewsId, reponse.text, ex=REDIS_NEWS_TIME)  # 设置过期时间 1小时
+
+    print(reponse.text)
 
     return reponse.text
 
@@ -76,13 +83,28 @@ def queryWord(word):
 
             return explain
 
+    #sign	text	签名，通过md5(appKey+q+salt+密钥)生成	True	appKey+q+salt+密钥的MD5值 5GFv0iwSAjnprcfKoktX9CNtxK2z79sj
+    appKey = '2284dabba457327d'
+    secretkey = '5GFv0iwSAjnprcfKoktX9CNtxK2z79sj'
+    q = word
+    salt ='{}'.format(random.randint(1, 200))
+    sign = MD5(appKey+q+salt+secretkey)
+
+    url = 'https://openapi.youdao.com/api?q={q}&from=en&to=zh_CHS&appKey={appKey}&salt={salt}&sign={sign}'.format(q=q,appKey=appKey,salt=salt,sign=sign)
+
+    print(url)
     # 从网络获取单词解释
-    url = "{}{}".format(current_app.config['SVR_DIC_URL'], word)
+    #url = "{}{}".format(current_app.config['SVR_DIC_URL'], word)
+
     reponse = requests.get(url)
 
+    #print(reponse.text)
     if rs is not None and reponse.status_code == 200:
+        #json_str = json.dumps(reponse.text)
+        #print(json_str)
         rs.set(word, reponse.text, ex=REDIS_WORD_TIME)  # 设置过期时间 1小时
 
+    #print(reponse.text)
     return reponse.text
 
 
@@ -108,6 +130,7 @@ def getImage(imgID):
     url = "{}{}".format(current_app.config['SVR_NEWS_IMG_URL'], imgID)
     r = requests.get(url)
 
+
     if rs is not None and r.status_code == 200:
         rs.set(imgID, r.content, ex=REDIS_IMG_TIME)  # 设置过期时间 1小时
 
@@ -115,6 +138,12 @@ def getImage(imgID):
                      attachment_filename=imgID,
                      mimetype='image/png')
 
+
+def MD5(src):
+    # md5 加密
+    md5 = hashlib.md5()
+    md5.update(src.encode('utf-8'))
+    return md5.hexdigest()
 
 # assuming rs is your redis connection
 def redis_cls():
