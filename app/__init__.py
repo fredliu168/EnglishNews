@@ -23,4 +23,7 @@ def create_app(config_name):
     from .api_2_0 import api as api_2_0_blueprint
     app.register_blueprint(api_2_0_blueprint, url_prefix='/api/v1.0')
 
+    from .api_3_0 import api as api_3_0_blueprint
+    app.register_blueprint(api_3_0_blueprint, url_prefix='/api/v3.0')
+
     return app

@@ -7,15 +7,18 @@ import requests
 import redis
 import hashlib
 import random
+from pymongo import *
 
 """
 获取新闻
 新增redis 内存数据库支持
+新增mongodb 支持,把数据存储到本地数据库,从本地数据库读取数据
 """
 
 
 @api.route('/news/<int:NewsId>', methods=['GET'])
 def getText(NewsId):
+
     REDIS_NEWS_TIME = current_app.config['REDIS_NEWS_TIME']
     rs = redis_cls()  # 连接resdis
 

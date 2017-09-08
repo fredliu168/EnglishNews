@@ -25,6 +25,22 @@ source /home/www/eglish_venv/bin/activate
 (venv)$ pip install -r requirement.txt
 ```
 
+# Git 使用
+
+远程操作的第一步，通常是从远程主机克隆一个版本库，这时就要用到git clone命令。
+
+```
+$ git clone <版本库的网址>
+```
+比如，克隆jQuery的版本库。
+```
+$ git clone https://github.com/jquery/jquery.git
+```
+该命令会在本地主机生成一个目录，与远程主机的版本库同名。如果要指定不同的目录名，可以将目录名作为git clone命令的第二个参数。
+```
+$ git clone <版本库的网址> <本地目录名>
+```
+
 拉取最新代码
 
 ```
@@ -497,7 +513,16 @@ Type: "help @" to get a list of commands in
 redis 127.0.0.1:6379> keys *
 (empty list or set)
 
+# 查看key
+redis 127.0.0.1:6379> get key
+
+# 查看key 生存时间
+
+127.0.0.1:6379> TTL wx_accesstoken
+(integer) 6811
+
 ```
+
 
 # python 操作redis
 
@@ -509,3 +534,110 @@ r =  redis.StrictRedis()
 img = open("/path/to/img.jpeg","rb").read()
 r.set("bild1",img)
 ```
+
+# Docker 使用
+
+
+容器存储层的生存周期和容器一样，容器消亡时，容器存储层也随之消亡。因此，任何保存于容器存储层的信息都会随容器删除而丢失。
+
+### 安装redis
+
+#### start a redis instance
+
+```
+$ docker run --name myredis -d redis
+```
+This image includes EXPOSE 6379 (the redis port), so standard container linking will make it
+automatically available to the linked containers (as the following examples illustrate).
+
+##### 后台(background)运行
+
+> -d 参数 表示后台运行
+
+要获取容器的输出信息，可以通过 docker logs 命令。
+
+> $ sudo docker logs [container ID or NAMES]
+
+当利用 docker run 来创建容器时，Docker 在后台运行的标准操作包括：
+
+> 1.检查本地是否存在指定的镜像，不存在就从公有仓库下载
+
+> 2.利用镜像创建并启动一个容器
+
+> 3.分配一个文件系统，并在只读的镜像层外面挂载一层可读写层
+
+> 4.从宿主主机配置的网桥接口中桥接一个虚拟接口到容器中去
+
+> 5.从地址池配置一个 ip 地址给容器
+
+> 6.执行用户指定的应用程序
+
+> 7.执行完毕后容器被终止
+
+
+#### 容器互联
+
+connect to it from an application
+```
+docker run -it --link myredis:redis --rm redis redis-cli -h redis -p 6379
+```
+
+>--link 参数的格式为 --link name:alias，其中 name 是要链接的容器的名称，alias 是这个连接的别名。
+
+>在执行 docker run 的时候如果添加 --rm 标记，则容器在终止后会立刻删除。注意，--rm 和 -d 参数不能同时使用。
+
+### 外部访问容器
+
+容器中可以运行一些网络应用，要让外部也可以访问这些应用，可以通过 -P 或 -p 参数来指定端口映射。
+
+当使用 -P 标记时，Docker 会随机映射一个 49000~49900 的端口到内部容器开放的网络端口
+
+```
+$ docker run -d -p 6379:6379 --name myredis redis
+```
+
+### 查看映射端口配置
+
+```
+$ docker port myredis
+```
+
+### 查看镜像
+
+```
+$ docker images
+```
+### 查看运行的容器
+
+```
+$ docker ps
+```
+
+### 终止容器,打开容器,删除容器
+
+```
+$ docker stop myredis
+$ docker start myredis
+$ docker rm myredis
+```
+
+终止状态的容器可以用 docker ps -a 命令看到
+
+此外，docker restart 命令会将一个运行态的容器终止，然后再重新启动它。
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+ 
